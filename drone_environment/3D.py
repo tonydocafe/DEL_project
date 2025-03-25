@@ -25,7 +25,7 @@ class DroneEnv3D(gym.Env):
         self.max_steps = 100
         self.current_step = 0
         
-        # Estado inicial [x, y, z, vx, vy, vz]
+        # initial state where v is the velocity [x, y, z, vx, vy, vz]
         self.state = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], dtype=np.float32)
         self.target = np.array([5.0, 5.0, 5.0], dtype=np.float32)  # Posição alvo
         
