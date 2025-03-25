@@ -21,8 +21,7 @@ class DroneEnv3D(gym.Env):
             dtype=np.float32
         )
         
-        # Parâmetros do ambiente
-        self.dt = 0.1  # Passo de tempo
+        self.dt = 0.1  # environment update time 
         self.max_steps = 100
         self.current_step = 0
         
