@@ -23,12 +23,12 @@ class DroneEnv2D(gym.Env):
             dtype=np.float32
         )
         
-        # Parâmetros do ambiente
-        self.dt = 0.1  # Passo de tempo
+       
+        self.dt = 0.1  # speed update
         self.max_steps = 100
         self.current_step = 0
         
-        # Estado inicial
+        # initial state
         self.state = np.array([0.0, 0.0, 0.0, 0.0], dtype=np.float32)  # [x, y, vx, vy]
         self.target = np.array([5.0, 5.0], dtype=np.float32)  # Posição alvo
         
