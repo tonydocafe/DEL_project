@@ -29,12 +29,13 @@ class DroneEnv3D(gym.Env):
         self.state = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], dtype=np.float32)
         self.target = np.array([5.0, 5.0, 5.0], dtype=np.float32)  # Posição alvo
         
-        # Configurar plot
+        # create graphic
         self.fig, self.ax = plt.subplots()
         
     def _get_obs(self):
         return self.state
-    
+        
+    # Euclidean distance, because the movement is free
     def _get_info(self):
         return {
             "distance": np.linalg.norm(self.state[:3] - self.target),
