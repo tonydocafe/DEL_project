@@ -1,7 +1,3 @@
-# Instalar o Gymnasium
-#!pip install gymnasium pygame matplotlib
-
-# Importar bibliotecas necessárias
 import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
@@ -14,7 +10,7 @@ class DroneEnv2D(gym.Env):
     def __init__(self):
         super(DroneEnv2D, self).__init__()
         
-        # Definir espaços de ação e observação
+        #definition of observation and action space
         self.action_space = spaces.Box(
             low=np.array([-1, -1], dtype=np.float32),
             high=np.array([1, 1], dtype=np.float32),
