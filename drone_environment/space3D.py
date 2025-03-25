@@ -10,7 +10,7 @@ class Drone3DEnv(gym.Env):
         super().__init__()
         self.render_mode = render_mode
         
-        # Aumentando o limite do espaço de ações para movimentos maiores
+        # definition of observation and action space
         self.action_space = gym.spaces.Box(low=-10, high=10, shape=(4,), dtype=np.float32)
         self.observation_space = gym.spaces.Box(low=-np.inf, high=np.inf, shape=(6,), dtype=np.float32)
 
