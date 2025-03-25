@@ -12,7 +12,7 @@ class DroneEnv3D(gym.Env):
     def __init__(self):
         super(DroneEnv3D, self).__init__()
         
-        # Definir espaços de ação e observação
+        # definition of observation and action space
         self.action_space = spaces.Box(
             low=np.array([-1, -1, -1], dtype=np.float32),
             high=np.array([1, 1, 1], dtype=np.float32),
