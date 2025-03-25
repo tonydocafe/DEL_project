@@ -43,9 +43,10 @@ class DroneEnv3D(gym.Env):
         }
     
     def reset(self, seed=None, options=None):
+        
         super().reset(seed=seed)
         
-        # Resetar estado
+        
         self.state = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], dtype=np.float32)
         self.current_step = 0
         
