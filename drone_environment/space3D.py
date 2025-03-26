@@ -30,16 +30,16 @@ class Drone3DEnv(gym.Env):
         p.resetSimulation()
         p.setGravity(0, 0, -9.81)  
 
-        # Criação do drone com URDF e ajustes
+        # drone in PyBullet
         self.drone = p.loadURDF("cube.urdf", basePosition=[0, 0, 1], globalScaling=0.5)
         p.changeDynamics(self.drone, -1, mass=1.0)  # Ajuste na massa do drone (1.0 kg)
 
-        # Estado inicial (posição + velocidade linear)
+      
         return np.array([0, 0, 1, 0, 0, 0], dtype=np.float32), {}
 
     def step(self, action):
-        # Aumentando a intensidade das forças aplicadas ao drone
-        forces = action * 50  # Ajustando a intensidade da força (pode ser mais alto)
+        
+        forces = action * 50  # applied force
 
         # Aplica as forças em todos os eixos (x, y, z)
         p.applyExternalForce(self.drone, -1, forceObj=[forces[0], forces[1], forces[2]], 
