@@ -84,12 +84,12 @@ class DroneEnv3D(gym.Env):
         
         # Determinar tamanho do drone baseado no Z (quanto maior Z, menor o ponto)
         z = self.state[2]
-        size = max(20, 100 - (z * 5))  # O tamanho diminui conforme o Z aumenta
+        size = max(20, 100 - (z * 5))  # the size decreases as z increases 
         
-        # Plotar drone
+        # drone plot 
         self.ax.scatter(self.state[0], self.state[1], c='red', s=size, label='Drone')
         
-        # Plotar alvo
+        # target plot
         self.ax.scatter(self.target[0], self.target[1], c='green', s=100, marker='x', label='Alvo')
         
         # Configurar gráfico
