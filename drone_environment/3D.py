@@ -106,10 +106,10 @@ class DroneEnv3D(gym.Env):
 
 env = DroneEnv3D()
 
-# Executar um episódio com ações aleatórias
+
 obs, info = env.reset()
 for _ in range(100):
-    action = env.action_space.sample()  # Ação aleatória
+    action = env.action_space.sample()  # random action
     obs, reward, terminated, truncated, info = env.step(action)
     
     env.render()
