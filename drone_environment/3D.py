@@ -53,17 +53,17 @@ class DroneEnv3D(gym.Env):
         return self._get_obs(), self._get_info()
     
     def step(self, action):
-        # Aplicar ação (aceleração em x, y, z)
+        
         acceleration = action * 0.5  # Limitar aceleração
         
-        # Atualizar velocidade
+        # update speed 
         self.state[3:] += acceleration * self.dt
-        self.state[3:] = np.clip(self.state[3:], -5, 5)  # Limitar velocidade
+        self.state[3:] = np.clip(self.state[3:], -5, 5)  # limit speed 
         
-        # Atualizar posição
+        # update position
         self.state[:3] += self.state[3:] * self.dt
         
-        # Verificar limites do ambiente
+        # check position
         self.state[:3] = np.clip(self.state[:3], -10, 10)
         
         # Calcular recompensa
