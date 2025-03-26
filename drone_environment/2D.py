@@ -89,7 +89,7 @@ class DroneEnv2D(gym.Env):
         # target alvo
         self.ax.scatter(self.target[0], self.target[1], c='green', s=100, marker='x', label='Alvo')
         
-        # Configurar gráfico
+        # graph limits
         self.ax.set_xlim(-10, 10)
         self.ax.set_ylim(-10, 10)
         self.ax.grid(True)
@@ -101,9 +101,6 @@ class DroneEnv2D(gym.Env):
 
 
 
-#///////////////////////////////////////////////////////////////////////////
-
-#\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
 
