@@ -22,7 +22,7 @@ class Drone3DEnv(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         p.resetSimulation()
-        p.setGravity(0, 0, -9.81)  # Configuração de gravidade
+        p.setGravity(0, 0, -9.81)  
 
         # Criação do drone com URDF e ajustes
         self.drone = p.loadURDF("cube.urdf", basePosition=[0, 0, 1], globalScaling=0.5)
