@@ -69,7 +69,7 @@ class Drone3DEnv(gym.Env):
 
             self.ax.plot(x_pos, y_pos, z_pos, label="Trajetória do Drone", color='blue')
 
-            # Obtendo a última posição do drone e exibindo como legenda dinâmica
+            # dynamic caption
             last_pos = self.positions[-1]
             self.ax.text(last_pos[0], last_pos[1], last_pos[2], 
                         f'({last_pos[0]:.2f}, {last_pos[1]:.2f}, {last_pos[2]:.2f})', 
