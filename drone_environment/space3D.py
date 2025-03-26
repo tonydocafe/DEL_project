@@ -14,7 +14,7 @@ class Drone3DEnv(gym.Env):
         self.action_space = gym.spaces.Box(low=-10, high=10, shape=(4,), dtype=np.float32)
         self.observation_space = gym.spaces.Box(low=-np.inf, high=np.inf, shape=(6,), dtype=np.float32)
 
-        # Conectar ao PyBullet
+        # connect to PyBullet
         self.physics_client = p.connect(p.DIRECT)  # Usando p.DIRECT
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         self.drone = None
