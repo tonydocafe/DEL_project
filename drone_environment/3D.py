@@ -29,7 +29,7 @@ class DroneEnv3D(gym.Env):
         self.state = np.array([0.0, 0.0, 0.0, 0.0, 0.0, 0.0], dtype=np.float32)
         self.target = np.array([5.0, 5.0, 5.0], dtype=np.float32)  # Posição alvo
         
-        # create graphic
+        # create graphic plot
         self.fig, self.ax = plt.subplots()
         
     def _get_obs(self):
