@@ -86,7 +86,7 @@ class DroneEnv2D(gym.Env):
         # drone plot 
         self.ax.scatter(self.state[0], self.state[1], c='red', s=100, label='Drone')
         
-        # Plotar alvo
+        # target alvo
         self.ax.scatter(self.target[0], self.target[1], c='green', s=100, marker='x', label='Alvo')
         
         # Configurar gráfico
