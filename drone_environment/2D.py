@@ -104,13 +104,13 @@ class DroneEnv2D(gym.Env):
 
 
 
-# Criar instância do ambiente
+
 env = DroneEnv2D()
 
-# Executar um episódio com ações aleatórias
+
 obs, info = env.reset()
 for _ in range(100):
-    action = env.action_space.sample()  # Ação aleatória
+    action = env.action_space.sample()  
     obs, reward, terminated, truncated, info = env.step(action)
     
     env.render()
