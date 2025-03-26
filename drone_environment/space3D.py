@@ -18,7 +18,11 @@ class Drone3DEnv(gym.Env):
         self.physics_client = p.connect(p.DIRECT)  # use p.DIRECT to run without window
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         self.drone = None
-
+        
+        self.fig = plt.figure(figsize=(6, 6))
+        self.ax = self.fig.add_subplot(111, projection='3d')
+        self.positions = []  # path taken
+    
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         p.resetSimulation()
