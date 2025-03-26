@@ -51,7 +51,10 @@ class Drone3DEnv(gym.Env):
         lin_vel, _ = p.getBaseVelocity(self.drone)
 
         # position update and limitation check
-        
+        x_min, x_max = -10, 10
+        y_min, y_max = -10, 10
+        z_min, z_max = 0, 5
+        pos = np.clip(pos, [x_min, y_min, z_min], [x_max, y_max, z_max])
         self.positions.append(pos)
 
         obs = np.array([*pos, *lin_vel], dtype=np.float32)
