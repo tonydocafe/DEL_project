@@ -30,7 +30,7 @@ class DroneEnv2D(gym.Env):
         self.state = np.array([0.0, 0.0, 0.0, 0.0], dtype=np.float32)  # [x, y, vx, vy]
         self.target = np.array([5.0, 5.0], dtype=np.float32)  # Posição alvo
         
-        # Configurar plot
+        # create plot graph
         self.fig, self.ax = plt.subplots()
         
     def _get_obs(self):
@@ -45,7 +45,7 @@ class DroneEnv2D(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         
-        # Resetar estado
+       
         self.state = np.array([0.0, 0.0, 0.0, 0.0], dtype=np.float32)
         self.current_step = 0
         
@@ -98,10 +98,6 @@ class DroneEnv2D(gym.Env):
         display.clear_output(wait=True)
         display.display(self.fig)
         plt.close()
-
-
-
-
 
 
 
