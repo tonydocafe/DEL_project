@@ -18,6 +18,8 @@ class Drone3DEnv(gym.Env):
         self.physics_client = p.connect(p.DIRECT)  # use p.DIRECT to run without window
         p.setAdditionalSearchPath(pybullet_data.getDataPath())
         self.drone = None
+          
+        self.target = np.array([5,5,4])
         
         self.fig = plt.figure(figsize=(6, 6))
         self.ax = self.fig.add_subplot(111, projection='3d')
