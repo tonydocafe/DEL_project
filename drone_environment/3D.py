@@ -35,7 +35,7 @@ class DroneEnv3D(gym.Env):
     def _get_obs(self):
         return self.state
         
-    # Euclidean distance, because the movement is free
+    # Euclidean norm for distance, because the movement is free
     def _get_info(self):
         return {
             "distance": np.linalg.norm(self.state[:3] - self.target),
@@ -54,28 +54,27 @@ class DroneEnv3D(gym.Env):
     
     def step(self, action):
         
-        acceleration = action * 0.5  # Limitar aceleração
+        acceleration = action * 0.5  # limit acceleration
         
-        # update speed 
-        self.state[3:] += acceleration * self.dt
+        
+        self.state[3:] += acceleration * self.dt # update speed 
+       
         self.state[3:] = np.clip(self.state[3:], -5, 5)  # limit speed 
         
-        # update position
-        self.state[:3] += self.state[3:] * self.dt
+        self.state[:3] += self.state[3:] * self.dt # update position
         
-        # check position
-        self.state[:3] = np.clip(self.state[:3], -10, 10)
+        self.state[:3] = np.clip(self.state[:3], -10, 10)# check position
         
-        # Calcular recompensa
+        
         distance = np.linalg.norm(self.state[:3] - self.target)
-        reward = -distance  # Recompensa negativa proporcional à distância
+        reward = -distance  # negative reward proportional to the target
         
-        # Verificar término do episódio
+        # check the end of the episode
         self.current_step += 1
         terminated = distance < 0.5 or self.current_step >= self.max_steps
         truncated = False
         
-        # Info adicional
+        
         info = self._get_info()
         
         return self._get_obs(), reward, terminated, truncated, info
