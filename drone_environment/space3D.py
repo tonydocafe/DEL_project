@@ -34,7 +34,7 @@ class Drone3DEnv(gym.Env):
         p.setGravity(0, 0, -9.81)  
         # drone in PyBullet
         self.drone = p.loadURDF("cube.urdf", basePosition=[0, 0, 1], globalScaling=0.5)
-        p.changeDynamics(self.drone, -1, mass=1.0)  
+        p.changeDynamics(self.drone, -1, mass=0.01)  
 
         self.positions = [] 
         return np.array([0, 0, 1, 0, 0, 0], dtype=np.float32), {}
@@ -60,33 +60,36 @@ class Drone3DEnv(gym.Env):
         return obs, reward, terminated, False, {}
 
     def render(self):
-      self.ax.clear()  
-      
-     
-      if self.positions:
-          x_pos = [pos[0] for pos in self.positions]
-          y_pos = [pos[1] for pos in self.positions]
-          z_pos = [pos[2] for pos in self.positions]
+        self.ax.clear()  
 
-          self.ax.plot(x_pos, y_pos, z_pos, label="Trajetória do Drone", color='blue')
+        if self.positions:
+            x_pos = [pos[0] for pos in self.positions]
+            y_pos = [pos[1] for pos in self.positions]
+            z_pos = [pos[2] for pos in self.positions]
 
-      
-      self.ax.scatter(self.target[0], self.target[1], self.target[2], 
-                      color='red', marker='x', s=100, label="Alvo")
+            self.ax.plot(x_pos, y_pos, z_pos, label="Trajetória do Drone", color='blue')
 
-      
-      self.ax.set_xlim(-10, 10)
-      self.ax.set_ylim(-10, 10)
-      self.ax.set_zlim(0, 5)
-      self.ax.set_xlabel('X')
-      self.ax.set_ylabel('Y')
-      self.ax.set_zlabel('Z')
-      self.ax.set_title('Movimento do Drone 3D')
-      self.ax.legend()
+            # Obtendo a última posição do drone e exibindo como legenda dinâmica
+            last_pos = self.positions[-1]
+            self.ax.text(last_pos[0], last_pos[1], last_pos[2], 
+                        f'({last_pos[0]:.2f}, {last_pos[1]:.2f}, {last_pos[2]:.2f})', 
+                        color='black', fontsize=10)
 
-      display.clear_output(wait=True)  #update
-      display.display(self.fig) #view
-      plt.close(self.fig)  
+        self.ax.scatter(self.target[0], self.target[1], self.target[2], 
+                        color='red', marker='x', s=100, label="Alvo")
+
+        self.ax.set_xlim(-10, 10)
+        self.ax.set_ylim(-10, 10)
+        self.ax.set_zlim(0, 5)
+        self.ax.set_xlabel('X')
+        self.ax.set_ylabel('Y')
+        self.ax.set_zlabel('Z')
+        self.ax.set_title('Movimento do Drone 3D')
+        self.ax.legend()
+
+        display.clear_output(wait=True)  
+        display.display(self.fig)   
+        plt.close(self.fig)  
 
 
 
