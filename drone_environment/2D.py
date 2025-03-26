@@ -3,9 +3,7 @@ from gymnasium import spaces
 import numpy as np
 import matplotlib.pyplot as plt
 from IPython import display
-#///////////////////////////////////////////////////////////////////////////
 
-#\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 class DroneEnv2D(gym.Env):
     def __init__(self):
         super(DroneEnv2D, self).__init__()
@@ -54,29 +52,30 @@ class DroneEnv2D(gym.Env):
         return self._get_obs(), self._get_info()
     
     def step(self, action):
-        # Aplicar ação (aceleração em x e y)
-        acceleration = action * 0.5  # Limitar aceleração
+      
+        acceleration = action * 0.5 # limit acceleration
         
-        # Atualizar velocidade
-        self.state[2:] += acceleration * self.dt
-        self.state[2:] = np.clip(self.state[2:], -5, 5)  # Limitar velocidade
         
-        # Atualizar posição
-        self.state[:2] += self.state[2:] * self.dt
+        self.state[2:] += acceleration * self.dt # update speed 
+        self.state[2:] = np.clip(self.state[2:], -5, 5) # update speed  
         
-        # Verificar limites do ambiente
-        self.state[:2] = np.clip(self.state[:2], -10, 10)
         
-        # Calcular recompensa
+        self.state[:2] += self.state[2:] * self.dt # update position
+
+        
+        
+        self.state[:2] = np.clip(self.state[:2], -10, 10) # check position
+        
+       
         distance = np.linalg.norm(self.state[:2] - self.target)
-        reward = -distance  # Recompensa negativa proporcional à distância
+        reward = -distance  # negative reward proportional to the target
         
-        # Verificar término do episódio
+        # check the end of the episode
         self.current_step += 1
         terminated = distance < 0.5 or self.current_step >= self.max_steps
         truncated = False
         
-        # Info adicional
+        
         info = self._get_info()
         
         return self._get_obs(), reward, terminated, truncated, info
@@ -84,7 +83,7 @@ class DroneEnv2D(gym.Env):
     def render(self):
         self.ax.clear()
         
-        # Plotar drone
+        # drone plot 
         self.ax.scatter(self.state[0], self.state[1], c='red', s=100, label='Drone')
         
         # Plotar alvo
