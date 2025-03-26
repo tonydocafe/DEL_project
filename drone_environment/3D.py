@@ -82,7 +82,7 @@ class DroneEnv3D(gym.Env):
     def render(self):
         self.ax.clear()
         
-        # Determinar tamanho do drone baseado no Z (quanto maior Z, menor o ponto)
+    
         z = self.state[2]
         size = max(20, 100 - (z * 5))  # the size decreases as z increases 
         
@@ -104,7 +104,6 @@ class DroneEnv3D(gym.Env):
         plt.close()
 
 
-# Criar instância do ambiente
 env = DroneEnv3D()
 
 # Executar um episódio com ações aleatórias
