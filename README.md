@@ -1,21 +1,19 @@
-# README - YOLO Treinamento e Predição
+# 📌 Sobre o Projeto
+Este repositório contém estudos e implementações relacionadas a redes neurais e ambientes de simulação para drones. Ele está dividido em duas principais pastas:
 
-Este repositório contém os arquivos e scripts utilizados no treinamento e na predição de um modelo YOLO. O treinamento foi realizado no Google Colab, e os arquivos foram posteriormente baixados e organizados para uso local.
+## 📂 cheats_and_lions
+Esta pasta contém estudos sobre a utilização do YOLOv5 para a identificação de leões e chitas em imagens e vídeos. O YOLOv5 é uma rede neural de detecção de objetos altamente eficiente e de alto desempenho, e aqui exploramos como ele pode ser treinado e aplicado para esse propósito.
 
-## Conteúdo do Repositório
+## 📂 drone_envioremente
+Esta pasta foca em estudos com o OpenAI Gym para criar e testar ambientes de simulação para drones. Esses ambientes incluem:
+- **2D**: Simulações bidimensionais para testes mais simples e rápidos.
+- **3D**: Simulações tridimensionais que representam um ambiente mais realista para o voo de drones.
 
-- **Relatório Final - YOLO.pdf**: Documento contendo toda a documentação do projeto, incluindo análises e resultados obtidos.
-- **main_yolo**: Script utilizado para o treinamento do modelo YOLO. Este script foi executado no Google Colab e depois transferido para este repositório.
-- **obj.zip**: Arquivo contendo os dados utilizados no treinamento do modelo, incluindo imagens e anotações.
-- **predicacao.zip**: Arquivo contendo os dados utilizados na fase de teste do modelo, incluindo imagens para predição.
+# 🚀 Tecnologias Utilizadas
+- YOLOv5
+- Python
+- OpenAI Gym
+- Redes Neurais
 
-## Informações Adicionais
-
-O treinamento do modelo foi realizado utilizando Google Colab devido à necessidade de maior capacidade computacional. Os arquivos resultantes do treinamento, incluindo pesos do modelo e logs, foram baixados e organizados neste repositório para facilitar a reprodutibilidade dos experimentos.
-
-Caso queira executar o modelo ou realizar novos testes, basta descompactar os arquivos `obj.zip` e `predicacao.zip` e seguir as instruções do script `main_yolo`.
-
----
-
-Para dúvidas ou sugestões, entre em contato!
+Este repositório está em constante desenvolvimento e contribuições são bem-vindas! 🎯
 
