@@ -1,3 +1,25 @@
+"""
+torch
+torchvision
+torchaudio
+matplotlib
+opencv-python
+pycocotools
+git+https://github.com/ultralytics/yolov5.git
+
+
+
+ pip install -r requirements.txt
+
+
+
+"""
+
+
+
+
+
+
 import os
 import shutil
 import torch
