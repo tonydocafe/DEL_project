@@ -53,22 +53,22 @@ names: ['chita', 'leao']
 with open(dataset_path, 'w') as file:
     file.write(yaml_content)
 
-# Treinar o modelo YOLOv5
+
 os.system(f"python {yolo_dir}/train.py --img 640 --batch 16 --epochs 50 "
           f"--data {dataset_path} --weights yolov5s.pt --device 0")
 
-# Carregar modelo treinado
+# load the model
 model = torch.hub.load('ultralytics/yolov5', 'custom', 
                        path=str(yolo_dir / "runs/train/exp/weights/best.pt"),
                        force_reload=True)
 model.eval()
 
-# Descompactar arquivos de predição, se necessário
+
 predict_zip = "predict.zip"
 if os.path.exists(predict_zip):
     shutil.unpack_archive(predict_zip, extract_dir="predict")
 
-# Rodar o modelo de detecção em imagens de predição
+# detects the images
 os.system(f"python {yolo_dir}/detect.py --source predict --weights "
           f"runs/train/exp2/weights/best.pt --img-size 640 --conf-thres 0.15 "
           f"--iou-thres 0.45 --device 0")
