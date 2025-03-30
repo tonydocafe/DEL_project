@@ -1,4 +1,6 @@
 """
+
+-requeriments.txt:
 torch
 torchvision
 torchaudio
@@ -8,7 +10,7 @@ pycocotools
 git+https://github.com/ultralytics/yolov5.git
 
 
-
+-commands:
  pip install -r requirements.txt
 
 
