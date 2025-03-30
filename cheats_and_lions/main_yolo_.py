@@ -24,7 +24,7 @@ import shutil
 import torch
 from pathlib import Path
 
-# Define os caminhos
+# way
 yolo_dir = Path("yolov5")
 dataset_zip = "YOLO_dataset.zip"
 dataset_path = yolo_dir / "YOLOv5/obj/dataset.yaml"
