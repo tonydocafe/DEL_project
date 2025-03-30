@@ -19,9 +19,6 @@ git+https://github.com/ultralytics/yolov5.git
 
 
 
-
-
-
 import os
 import shutil
 import torch
