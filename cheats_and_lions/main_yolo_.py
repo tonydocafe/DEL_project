@@ -73,7 +73,7 @@ os.system(f"python {yolo_dir}/detect.py --source predict --weights "
           f"runs/train/exp2/weights/best.pt --img-size 640 --conf-thres 0.15 "
           f"--iou-thres 0.45 --device 0")
 
-# Exibir imagens de saída
+# output with imagens
 from IPython.display import Image, display
 
 output_folder = Path("runs/detect/exp13")
