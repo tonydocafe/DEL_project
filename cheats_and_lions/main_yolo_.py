@@ -24,23 +24,23 @@ import shutil
 import torch
 from pathlib import Path
 
-# way
+
 yolo_dir = Path("yolov5")
 dataset_zip = "YOLO_dataset.zip"
 dataset_path = yolo_dir / "YOLOv5/obj/dataset.yaml"
 
-# Clonar o repositório YOLOv5 se ele ainda não existir
+
 if not yolo_dir.exists():
     os.system("git clone https://github.com/ultralytics/yolov5.git")
 
-# Instalar as dependências do YOLOv5
+
 os.system(f"pip install -qr {yolo_dir}/requirements.txt")
 
-# Descompactar o conjunto de dados (se necessário)
+
 if os.path.exists(dataset_zip):
     shutil.unpack_archive(dataset_zip, extract_dir=yolo_dir / "YOLOv5")
 
-# Criar o arquivo de configuração do dataset
+# division of key 
 yaml_content = """
 train: yolov5/YOLOv5/obj/images/train
 val: yolov5/YOLOv5/obj/images/val
